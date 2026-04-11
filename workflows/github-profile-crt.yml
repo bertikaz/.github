@@ -1,0 +1,23 @@
+name: Build CRT contribution SVGs
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Every day at 10:15 UTC (edit to taste)
+    - cron: '15 10 * * *'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Generate Ice SVGs
+      uses: stefashkaa/github-profile-crt@v1
+      with:
+        output-dir: assets
+        themes: ice
+          # github-user - set for a different user/org or to aggregate org data (defaults to repo owner)
+          # github-token - set for org data access (defaults to GITHUB_TOKEN)
+          # include-org-private - set to 'true' to include private repos in org aggregation (defaults to 'false')
